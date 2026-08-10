@@ -34,16 +34,23 @@ print(f"You only have {max_attempts} attempts.")
 
 count_try = 0
 while True:
-    guess = int(input("Enter your guess: "))
-    count_try += 1
-    if count_try == max_attempts and guess != right_number:
-        print(f"Game Over!\nThe correct number was {right_number}.")
-        break
-    elif guess == right_number:
-        print(f"Congratulations! You guessed the number in {count_try} attempts.")
-        break
-    elif guess < right_number:
-        print("Too Low! Try again.")
-    else:
-        print("Too High! Try again.")
+    try:
+        guess = int(input("Enter your guess: "))
+        if guess < 1 or guess > max_number:
+            print(f"Please enter a number between 1 and {max_number}")
+            continue
+
+        count_try += 1
+        if count_try == max_attempts and guess != right_number:
+            print(f"Game Over!\nThe correct number was {right_number}.")
+            break
+        elif guess == right_number:
+            print(f"Congratulations! You guessed the number in {count_try} attempts.")
+            break
+        elif guess < right_number:
+            print("Too Low! Try again.")
+        else:
+            print("Too High! Try again.")
+    except ValueError:
+        print("Please enter a valid number!")
 
