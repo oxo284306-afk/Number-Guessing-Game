@@ -1,12 +1,38 @@
 import random
 
-right_number = random.randint(1, 10)
-print("=== Number Guessing Game ===\n")
-print("I'm thinking of a number between 1 and 10")
+while True:
+    print("=== Number Guessing Game ===")
+    choice = input("""
+    1. Easy
+    2. Medium
+    3. Hard
+    Choose difficulty: """)
 
-max_attempts = 5
+    if choice == '1':
+        max_attempts = 10
+        max_number = 10
+        right_number = random.randint(1, max_number)
+        break
+    elif choice == '2':
+        max_attempts = 7
+        max_number = 50
+        right_number = random.randint(1, max_number)
+        break
+    elif choice == '3':
+        max_attempts = 5
+        max_number = 100
+        right_number = random.randint(1, max_number)
+        break
+    else:
+        print("Wrong choice! Please choose (1,2,3)")
+
+
+
+print(f"\nI'm thinking of a number between 1 and {max_number}")
+print(f"You only have {max_attempts} attempts.")
+
+
 count_try = 0
-
 while True:
     guess = int(input("Enter your guess: "))
     count_try += 1
@@ -20,3 +46,4 @@ while True:
         print("Too Low! Try again.")
     else:
         print("Too High! Try again.")
+
