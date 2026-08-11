@@ -29,7 +29,6 @@ while True:
 
 
 print(f"\nI'm thinking of a number between 1 and {max_number}")
-print(f"You only have {max_attempts} attempts.")
 
 
 count_try = 0
@@ -51,6 +50,8 @@ while True:
             print("Too Low! Try again.")
         else:
             print("Too High! Try again.")
+            
+        print(f"Attempts remaining: {max_attempts - count_try}")
     except ValueError:
         print("Please enter a valid number!")
 
