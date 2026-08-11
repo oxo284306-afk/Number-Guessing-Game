@@ -1,5 +1,6 @@
 import random
 
+
 while True:
     print("=== Number Guessing Game ===")
     choice = input("""
@@ -27,31 +28,34 @@ while True:
         print("Wrong choice! Please choose (1,2,3)")
 
 
-
 print(f"\nI'm thinking of a number between 1 and {max_number}")
 
-
-count_try = 0
 while True:
-    try:
-        guess = int(input("Enter your guess: "))
-        if guess < 1 or guess > max_number:
-            print(f"Please enter a number between 1 and {max_number}")
-            continue
+    count_try = 0
+    while True:
+        try:
+            guess = int(input("Enter your guess: "))
+            if guess < 1 or guess > max_number:
+                print(f"Please enter a number between 1 and {max_number}")
+                continue
 
-        count_try += 1
-        if count_try == max_attempts and guess != right_number:
-            print(f"Game Over!\nThe correct number was {right_number}.")
-            break
-        elif guess == right_number:
-            print(f"Congratulations! You guessed the number in {count_try} attempts.")
-            break
-        elif guess < right_number:
-            print("Too Low! Try again.")
-        else:
-            print("Too High! Try again.")
-            
-        print(f"Attempts remaining: {max_attempts - count_try}")
-    except ValueError:
-        print("Please enter a valid number!")
+            count_try += 1
+            if count_try == max_attempts and guess != right_number:
+                print(f"Game Over!\nThe correct number was {right_number}.")
+                break
+            elif guess == right_number:
+                print(f"Congratulations! You guessed the number in {count_try} attempts.")
+                break
+            elif guess < right_number:
+                print("Too Low! Try again.")
+            else:
+                print("Too High! Try again.")
+                
+            print(f"Attempts remaining: {max_attempts - count_try}")
+        except ValueError:
+            print("Please enter a valid number!")
+
+    answer = input("Play again? (y/n): ").lower()
+    if answer != 'y':
+        break
 
