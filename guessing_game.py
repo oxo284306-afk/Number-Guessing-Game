@@ -27,6 +27,11 @@ def choose_difficulty():
             print("Wrong choice! Please choose (1,2,3)")
 
 
+def calculate_score(count_try, max_attempts):
+    score = int(((max_attempts - count_try + 1) / max_attempts) * 100)
+    return score
+
+
 def play_game(max_number, max_attempts):
     right_number = random.randint(1, max_number)
     print(f"\nI'm thinking of a number between 1 and {max_number}")
@@ -44,7 +49,9 @@ def play_game(max_number, max_attempts):
                 print(f"Game Over!\nThe correct number was {right_number}.")
                 break
             elif guess == right_number:
+                score = calculate_score(count_try, max_attempts)
                 print(f"Congratulations! You guessed the number in {count_try} attempts.")
+                print(f"Your score: {score}")
                 break
             elif guess < right_number:
                 print("Too Low! Try again.")
